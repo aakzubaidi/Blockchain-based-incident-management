@@ -40,7 +40,7 @@ Following are important requirements for using the library in your monitoring to
 
 ----
 ## User manual
-Using the library is straightforward process. Refer to Class **DriverClass.java** for an example of how to use the library within your monitoring tool. Following are some detail. The instructions in Class **DriverClass.java** is only and example for testing purposes. It is not meant to be conclusive or be run within the same class. Different instructions perform different functionalities. Thus, every part of the class should be placed wherever suitable in your monitoring tool. 
+Using the library is straightforward process. Refer to Class **DriverClass.java** for an example of how to use the library within your monitoring tool. Following are some detail. The instructions in Class **DriverClass.java** are only for example and testing purposes. It is not meant to be conclusive or be run within the same class. Different instructions perform different functionalities. Thus, every part of the class should be placed wherever suitable in your monitoring tool. 
 
 For each of the following you may use in separate classes in altogether in one class. depends on your needs.
 
