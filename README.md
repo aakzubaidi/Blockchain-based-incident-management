@@ -2,7 +2,7 @@
 This project shows an in example of authenticating and authorizing monitoring tools. It also shows how an authorised monitoring tool can use our library for handling incidents and reporting them to Blockchain (Hyperledger Fabric 2). The reported incidents are processed and assessed by a non-repudible smart contract operating the in blockchain environment beyond the influence of service providers or third parties . Please refer to out published article [A Blockchain-based Approach for Assessing Compliance with SLA-guaranteed IoT Services](https://ieeexplore.ieee.org/document/9192398).
 
 ## Design Methodology
-By studying the capabilities of typical monitoring tools such as diversity of collected metrics and at which rates they are collected, and so on, we realize this incident management Blockchain client.  
+By studying the capabilities of typical monitoring tools such as diversity of collected metrics and at which rates they are collected, and so on, we realize this incident management Blockchain client.  The ultimate aim is to enable seamless integration of this Blockchain-based incident management client with any monitoring tool.
 
 ## Library features:
 1- In terms of Authentication and Authorization to the blockchain platform:
