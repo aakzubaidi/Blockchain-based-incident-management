@@ -33,7 +33,16 @@ Following are important requirements for using the library in your monitoring to
 - include **application-java.jar** to your class path.
 - the library was tested using JRE AdoptOpenJDK 11 [11.0.8]. Highly recommended to include this particular JRE to your build path as well.
 
-2- import necessary cryptos, and connection files necessary for communication with blockchain certificate authority, authentication and authorization. They are also necessary for communicating to the blockchain platform, the smart contract, and for performing relevant incident management tasks.
+2- install CouchDB using docker.
+- it simple as running this command
+```sh
+docker run -p 5984:5984 --name incidentsDB -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=adminpw couchdb
+```
+Confirm the couchDB server is up and running by browsing [http://127.0.0.1:5984/_utils/#](http://127.0.0.1:5984/_utils/#).
+- username is: admin
+- password is: adminpw
+
+3- import necessary cryptos, and connection files necessary for communication with blockchain certificate authority, authentication and authorization. They are also necessary for communicating to the blockchain platform, the smart contract, and for performing relevant incident management tasks.
 - in the high level of your monitoring tool directory, import both of these files:
     * connection.json
     * certificate.pem
@@ -55,19 +64,19 @@ import application.java.RegisterUser;
 2- Enroll Admin, create monitoring wallet, and import Admin identity to the monitoring wallet. Then, use the Admin identity to register an identity for your monitoring tool in the blockchain platform. It will import the monitoring identity in the wallet as well
 
 ```java
-        Datastore datastore = Datastore.getInstance();
-        //choose a an identity name for your monitoring tool.
-        datastore.setMonitoringIdentity("AliAlzubaidi");
-        //important for connecting to the blockchain environment
-        //enrolls the admin and register the monitoring client
-         try {
-         //enroll Admin
-         EnrollAdmin.main(null);
-         // register an identity for the monitoring tool
-         RegisterUser.main(null);
-         } catch (Exception e) {
-         System.err.println(e);
-         }
+Datastore datastore = Datastore.getInstance();
+//choose a an identity name for your monitoring tool.
+datastore.setMonitoringIdentity("AliAlzubaidi");
+//important for connecting to the blockchain environment
+//enrolls the admin and register the monitoring client
+    try {
+    //enroll Admin
+    EnrollAdmin.main(null);
+    // register an identity for the monitoring tool
+    RegisterUser.main(null);
+    } catch (Exception e) {
+    System.err.println(e);
+    }
 ```
 
 Eventually, you will see a directory in your main project folder; named **wallet** containing both identities of:
@@ -84,13 +93,19 @@ import application.java.ReportingScheduler;
 ```
 2- define the expected behavior; A.K.A Service Level Objective (SLO)
 ```java
-        Datastore datastore = Datastore.getInstance();
-        //name of the QoS metric (e.g. Throughput, Latency, etc.)
-        String QoSmetric = ("APPLatency");
-        Datastore.setQoSmetric(QoSmetric);
-        //define Requered Service Level (GraterThan, LessThan, Equal)
-        //define threshold
-        datastore.setQoSThreshold(10);
+Datastore datastore = Datastore.getInstance();
+//name of the QoS metric (e.g. Throughput, Latency, etc.)
+String QoSmetric = ("APPLatency");
+Datastore.setQoSmetric(QoSmetric);
+//important for connecting to the blockchain environment
+// enrolls the admin and register the monitoring client
+try {
+EnrollAdmin.main(null);
+RegisterUser.main(null);
+CreateQoS.main(null);
+} catch (Exception e) {
+System.err.println(e);
+}
 
 ```
 
