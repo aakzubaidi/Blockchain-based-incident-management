@@ -21,6 +21,76 @@ This project shows an in example of authenticating and authorizing monitoring to
 - report about any QoS (i.e. Throughput, Latency, ...).
 - set required level (Greater than, Less than, equals, ...).
 - set threshold (e.g. 10).
+-----
+## Prerequisites
+Following are important requirements for using the library in your monitoring tool: 
+ 
+1- Build Path: 
+- include **application-java.jar** to your class path.
+- the library was tested using JRE AdoptOpenJDK 11 [11.0.8]. Highly recommended to include this particular JRE to your build path as well.
+
+2- import necessary cryptos, and connection files necessary for communication with blockchain certificate authority, authentication and authorization. They are also necessary for communicating to the blockchain platform, the smart contract, and for performing relevant incident management tasks.
+- in the high level of your monitoring tool directory, import both of these files:
+    * connection.json
+    * certificate.pem
+
+----
+## User manual
+Using the library is straightforward process. Refer to Class **DriverClass.java** for an example of how to use the library within your monitoring tool. Following are some detail. The instructions in Class **DriverClass.java** is only and example for testing purposes. It is not meant to be conclusive or be run within the same class. Different instructions perform different functionalities. Thus, every part of the class should be placed wherever suitable in your monitoring tool. 
+
+For each of the following you may use in separate classes in altogether in one class. depends on your needs.
+
+------
+### Authenticate and Authorize your monitoring:
+1- import relevant APIs
+```java
+import application.java.Datastore;
+import application.java.EnrollAdmin;
+import application.java.RegisterUser;
+```
+2- Enroll Admin, create monitoring wallet, and import Admin identity to the monitoring wallet. Then, use the Admin identity to register an identity for your monitoring tool in the blockchain platform. It will import the monitoring identity in the wallet as well
+
+```java
+        Datastore datastore = Datastore.getInstance();
+        //choose a an identity name for your monitoring tool.
+        datastore.setMonitoringIdentity("AliAlzubaidi");
+        //important for connecting to the blockchain environment
+        //enrolls the admin and register the monitoring client
+         try {
+         //enroll Admin
+         EnrollAdmin.main(null);
+         // register an identity for the monitoring tool
+         RegisterUser.main(null);
+         } catch (Exception e) {
+         System.err.println(e);
+         }
+```
+
+Eventually, you will see a directory in your main project folder; named **wallet** containing both identities of:
+- admin.id
+- your monitoring identity
+
+---
+## Creating a QoS metric in the blockchain records
+1- import relevant APIs
+```java
+import application.java.Datastore;
+import application.java.MonitoringBehaviour;
+import application.java.ReportingScheduler;
+```
+2- define the expected behavior; A.K.A Service Level Objective (SLO)
+```java
+        Datastore datastore = Datastore.getInstance();
+        //name of the QoS metric (e.g. Throughput, Latency, etc.)
+        String QoSmetric = ("APPLatency");
+        Datastore.setQoSmetric(QoSmetric);
+        //define Requered Service Level (GraterThan, LessThan, Equal)
+        //define threshold
+        datastore.setQoSThreshold(10);
+
+```
+
+
 
 
 
