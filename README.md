@@ -7,13 +7,13 @@
 You find in the repo a java class, named **DriverClasss.java**. It shows an example of how to use our library for authenticating and authorizing monitoring tools. It also shows how an authorized monitoring tool can use our library creating QoS metrics, defining their threshold and required service level. It also shows how adjust schedulers that the library use for scheduling the reporting process. The library will handle the rest tasks such as identifying incidents, managing them, and reporting them to Blockchain (Hyperledger Fabric 2).
 
 ## Design Methodology
-By studying the capabilities of typical monitoring tools such as diversity of collected metrics and at which rates they are collected, and so on, we realize this incident management Blockchain client.  The ultimate aim is to enable seamless integration of this Blockchain-based incident management client with any monitoring tool.
+By studying the capabilities of typical monitoring tools such as diversity of collected metrics and at which rates they are collected, and so on, we realize this incident management Blockchain client. The ultimate aim is to enable seamless integration of this Blockchain-based incident management client with any monitoring tool.
 
 ## Library features:
 1- In terms of Authentication and Authorization to the blockchain platform:
-- creates a blockchain waller for the monitoring tool.
-- enables communication a blockchain environment
-- enrolls to the Blockchain Certificate Authority by generating the already recognized Monitoring Admin Identity and import it to the monitoring wallet.
+- creates a blockchain wallet for the monitoring tool.
+- enables communication to a blockchain environment
+- enrolls the monitoring tool admin the Blockchain Certificate Authority by generating the already recognized Monitoring Admin Identity and import it to the monitoring wallet.
 - Registers the monitoring tool to the blockchain platform using the Admin identity. It generates relevant Identity and import it the monitoring wallet.
 -facilitate communication with the blockchain platform and the deployed smart contract. 
 
@@ -38,7 +38,7 @@ Following are important requirements for using the library in your monitoring to
 - include **application-java.jar** to your class path.
 - the library was tested using JRE AdoptOpenJDK 11 [11.0.8]. Highly recommended to include this particular JRE to your build path as well.
 
-2- import necessary cryptos, and connection files necessary for communication with blockchain certificate authority, authentication and authorization. They are also necessary for communicating to the blockchain platform, the smart contract, and for performing relevant incident management tasks.
+2- import cryptos, and connection files necessary for establishing communication with blockchain certificate authority, authentication and authorization. They are also important for transacting with the blockchain platform, the smart contract, and for performing relevant incident management tasks.
 - in the high level of your monitoring tool directory, import both of these files:
     * connection.json
     * certificate.pem
