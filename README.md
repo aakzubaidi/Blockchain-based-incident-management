@@ -100,16 +100,17 @@ if the QoS already exists in the blockchain records, the library will notify you
 
 -----
 ## Adjusting the scheduler.
-For every QoS metric you create, You need to bring up a worker that seeks to identify any relevant incident to this particular QoS metric. You can also adjust this worker to be scheduled at fixed rate as or different rate as per you requirement. For example, you can consider setting the delay for scheduling worker according to how frequent you expect to receive monitoring logs about this particular QoS metric.
+For every QoS metric you create, You need to bring up a QoS worker that seeks to identify any relevant incident to this particular QoS metric. You can also adjust this worker to be scheduled at fixed rate as or different rate as per you requirement. For example, you can consider setting the delay for scheduling worker according to how frequent you expect to receive monitoring logs about this particular QoS metric.
 
 1- You may need to import the following:
 ```java
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import application.java.ReportingScheduler;
 ```
 
-2- you can define the worker and schedule it as in the following:
+2- you can define the QoS worker and schedule it as in the following:
 ```java
 //set delay in second
 datastore.setDelay(10);
@@ -118,6 +119,36 @@ final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
 scheduler.scheduleAtFixedRate(new ReportingScheduler(QoSmetric), datastore.getDelay(), datastore.getDelay(),TimeUnit.SECONDS);
 ```
 
+----
+
+## Evaluating received monitoring metrics:
+For every metric the monitoring tool receives about a QoS, you can pass it to library for compliance evaluation. You can set the following:
+- What QoS metric (Throughput, Latency, CPU, etc.)
+- Required Service Level (GraterThan, LessThan, Equals).
+- Threshold.
+
+The Library will evaluate every received metric according to this required service level against the defined threshold.
+
+1- Import relevant APIs.
+```java
+import application.java.MonitoringBehaviour;
+import application.java.RequieredLevel;
+```
+2- evaluate the received monitoring metric
+```java
+// Requered Service Level (GraterThan, LessThan, Equals)
+RequieredLevel requieredLevel = RequieredLevel.LessThan;
+// set a threshold to test against
+double threshold = 10;
+MonitoringBehaviour monitoringBehaviour = new MonitoringBehaviour();
+// test compliant monitoring metric against a threshold
+// please define a thrshold in the file Datastore.
+double monitoringReading = 11;
+
+monitoringBehaviour.evaluateMonitoringMetric(QoSmetric, monitoringReading requieredLevel, threshold);
+```
+
+Anything else will be taken care of by our library (Blockchain-based Incident Management Client).
 
 
 
