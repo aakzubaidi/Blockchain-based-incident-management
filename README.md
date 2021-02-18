@@ -92,17 +92,30 @@ import application.java.ReportingScheduler;
 Datastore datastore = Datastore.getInstance();
 //name of the QoS metric (e.g. Throughput, Latency, etc.)
 String QoSmetric = ("APPLatency");
-Datastore.setQoSmetric(QoSmetric);
-//important for connecting to the blockchain environment
-// enrolls the admin and register the monitoring client
-try {
-EnrollAdmin.main(null);
-RegisterUser.main(null);
-CreateQoS.main(null);
-} catch (Exception e) {
-System.err.println(e);
-}
+ // create a QoS metric
+CreateQoS.main(new String[] {QoSmetric});
+```
+### Warning:
+if the QoS already exists in the blockchain records, the library will notify you about that by showing an error (the QoS metric already exists). This is only a warning and does not mean defective operation. You can use the already existing QoS metric as normal.
 
+-----
+## Adjusting the scheduler.
+For every QoS metric you create, You need to bring up a worker that seeks to identify any relevant incident to this particular QoS metric. You can also adjust this worker to be scheduled at fixed rate as or different rate as per you requirement. For example, you can consider setting the delay for scheduling worker according to how frequent you expect to receive monitoring logs about this particular QoS metric.
+
+1- You may need to import the following:
+```java
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+```
+
+2- you can define the worker and schedule it as in the following:
+```java
+//set delay in second
+datastore.setDelay(10);
+//schedule monitoring agent to check for incidents
+final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
+scheduler.scheduleAtFixedRate(new ReportingScheduler(QoSmetric), datastore.getDelay(), datastore.getDelay(),TimeUnit.SECONDS);
 ```
 
 
