@@ -1,5 +1,6 @@
 /**
- * @appnote Example QoS metric reporting using throughput
+ * @appnote Example QoS metric reporting using throughput. 
+ * Have a look on the readme file for approaprtiate usage
  * @author aliaalzubaidi
  * @since 2021
  */
