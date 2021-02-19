@@ -1,5 +1,5 @@
 # Blockchain-based Incident Management Client Library (Approach)
- This repo provides a library that realises our approach for handling SLA breaches based on blockchain. It enables identifying incidents and reporting them to blockchain-based incident management solutions, where these incidents to be processed and assessed by a non-repudible smart contract operating the in blockchain environment beyond the influence of service providers or third parties. For further details about our blockchain-ased incident management approach, refer to our published article [A Blockchain-based Approach for Assessing Compliance with SLA-guaranteed IoT Services](https://ieeexplore.ieee.org/document/9192398). 
+ This repo provides a library that realizes our approach for handling SLA breaches based on blockchain. It enables identifying incidents and reporting them to blockchain-based incident management solutions, where these incidents to be processed and assessed by a non-repudible smart contract operating the in blockchain environment beyond the influence of service providers or third parties. For further details about our blockchain-ased incident management approach, refer to our published article [A Blockchain-based Approach for Assessing Compliance with SLA-guaranteed IoT Services](https://ieeexplore.ieee.org/document/9192398). 
  
  This library operates at the client level and acts as a client for our blockchain-based incident management solution. it provides existing monitoring tools with the capabilities of identifying incidents based on pre-defined Service Level Objective (SLO) as per defined in the SLA in place. The ultimate aim of this library is to apply best practice methods that we learnt from experience and several experiments on how monitoring tools should identify incidents and report them to blockchain in a way that is appropriate to blockchain unique behavior. For example, we know from experience that, blockchain transactions are not fire-and-forget, and there has to be a safe mechanism for reporting incidents. This is of especial important when it comes to critical scenarios. This library can be integrate with existing monitoring tools that wishes to follow our blockchain-based approach for processing and assessing SLA incidents.
 
@@ -13,7 +13,7 @@ By studying the capabilities of typical monitoring tools such as diversity of co
 1- In terms of Authentication and Authorization to the blockchain platform:
 - creates a blockchain wallet for the monitoring tool.
 - enables communication to a blockchain environment
-- enrolls the monitoring tool admin the Blockchain Certificate Authority by generating the already recognized Monitoring Admin Identity and import it to the monitoring wallet.
+- enrolls the monitoring tool admin to the Blockchain Certificate Authority by generating a registered Identity and importing it to the monitoring wallet.
 - Registers the monitoring tool to the blockchain platform using the Admin identity. It generates relevant Identity and import it the monitoring wallet.
 -facilitate communication with the blockchain platform and the deployed smart contract. 
 
