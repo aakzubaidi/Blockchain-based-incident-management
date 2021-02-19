@@ -14,7 +14,7 @@ By studying the capabilities of typical monitoring tools such as diversity of co
 - creates a blockchain wallet for the monitoring tool.
 - establishes and facilitate communication with a blockchain environment and the deployed smart contract.
 - enrolls the monitoring tool admin to the Blockchain Certificate Authority by generating a registered Identity and importing it to the monitoring wallet.
-- Registers the monitoring tool to the blockchain Certificate authority using the Admin identity. It generates relevant Identity and import it to the monitoring wallet.
+- Registers the monitoring tool to the blockchain Certificate authority using the Admin identity. It generates the monitoring tool corresponding Identity and import it to the monitoring wallet.
 
 2- It provides a set of APIs to facilitate interfacing with the smart contract functionalities such as:
 - creation a QoS metric of interest (i.e. Throughput, Latency, ...).
