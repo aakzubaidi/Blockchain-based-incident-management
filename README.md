@@ -144,7 +144,7 @@ MonitoringBehaviour monitoringBehaviour = new MonitoringBehaviour();
 // please define a thrshold in the file Datastore.
 double monitoringReading = 11;
 
-monitoringBehaviour.evaluateMonitoringMetric(QoSmetric, monitoringReading requieredLevel, threshold);
+monitoringBehaviour.evaluateMonitoringMetric(QoSmetric, monitoringReading, requieredLevel, threshold);
 ```
 
 Anything else will be taken care of by our library (Blockchain-based Incident Management Client).
