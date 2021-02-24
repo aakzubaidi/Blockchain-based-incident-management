@@ -12,6 +12,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="/Users/aliaalzubaidi/IoTSim-Osmosis"/>
 			<item value="/Users/aliaalzubaidi/prometheus-spring-boot-master 2"/>
 			<item value="/Users/aliaalzubaidi/Google Drive/PhD/Other&apos;s projects/Ayman/metrics"/>
 			<item value="/Users/aliaalzubaidi/Google Drive/PhD/Other&apos;s projects/Ayman/bookshop-restlet"/>
